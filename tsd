@@ -3,7 +3,6 @@
 . /lib/lsb/init-functions
 ##############################################################################
 #Simple start/stop script for OpenTSDB on Ubuntu 14.04 
-#Install to /etc/init.d/tsd
 #Puts process in background and writes to all output to logfile specified
 #Assumptions: You have compiled OpenTSDB from source and run 'make install'
 #to move certain files certain places.
@@ -27,6 +26,7 @@ TSD_START_CMD=tsd
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 TSD_LOG_FILE=/var/log/tsd/tsd.log
+VERBOSE="yes"
 JDK_DIRS="/usr/lib/jvm/java-7-oracle /usr/lib/jvm/java-7-openjdk \
    /usr/lib/jvm/java-7-openjdk-amd64/ /usr/lib/jvm/java-7-openjdk-i386/ \
    /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-6-openjdk \
@@ -64,7 +64,7 @@ do_start()
 
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON $TSD_START_CMD --test > /dev/null \
 		|| return 1
-	#start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON $TSD_START_CMD $DAEMON_ARGS \
+
 	start-stop-daemon --start --quiet \
 	 --make-pidfile --pidfile $PIDFILE --background       \
 	 --startas /bin/bash -- -c "exec $DAEMON $TSD_START_CMD $DAEMON_ARGS > $TSD_LOG_FILE 2>&1" \

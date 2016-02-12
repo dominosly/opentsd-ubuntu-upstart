@@ -6,7 +6,8 @@ A simple start/stop script for OpenTSDB on Ubuntu. This was tested and used spec
 
 Prerequisites
 ---------
-An installed version of OpenTSDB: http://opentsdb.net/docs/build/html/installation.html#.
+An installed version of OpenTSDB: http://opentsdb.net/docs/build/html/installation.html#.  
+Run 'mkdir /var/log/tsd' or adjust the log directory to one that exists.
 
 Installation  
 -----------
