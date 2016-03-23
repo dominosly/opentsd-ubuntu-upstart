@@ -67,7 +67,7 @@ do_start()
 
 	start-stop-daemon --start --quiet \
 	 --make-pidfile --pidfile $PIDFILE --background       \
-	 --startas /bin/bash -- -c "exec $DAEMON $TSD_START_CMD $DAEMON_ARGS > $TSD_LOG_FILE 2>&1" \
+	 --startas /bin/bash -- -c "exec $DAEMON $TSD_START_CMD $DAEMON_ARGS >> $TSD_LOG_FILE 2>&1" \
 		|| return 2
 }
 
